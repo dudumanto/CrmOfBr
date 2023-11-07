@@ -46,13 +46,17 @@ class CadastroOficinaController extends Controller
         }
 
         $cadastro = Cadastro::create([
+            'cnpj' => $data['cnpj'],
+            'status'=> $data['status'],
             'nome' => $data['nome'],
             'sobrenome' => $data['sobrenome'],
             'email' => $data['email'],
             'celular' => $data['celular'],
-            'telefone' => $data['telefone'],
+            'telefone' => $data['telefone_res'],
             'oficina' => $data['oficina'],
+            'fantasia'=> $data['fantasia'],
             'cargo' => $data['cargo'],
+            'ramo'=> $data['ramo'],
             'estado' => $data['estado'],
             'cidade' => $data['cidade'],
         ]);
@@ -93,15 +97,19 @@ class CadastroOficinaController extends Controller
     {
         $data = $request ->all();
         $cadastro =Cadastro ::find($id)->update([
-        'nome'=> $data['nome'],
-        'sobrenome'=> $data['sobrenome'],
-        'email'=> $data['email'],
-        'celular'=> $data['celular'],
-        'telefone'=> $data['telefone'],
-        'oficina'=> $data['oficina'],
-        'cargo'=> $data['cargo'],
-        'estado'=> $data['estado'],
-        'cidade'=> $data['cidade'],
+            'cnpj' => $data['cnpj'],
+            'status'=> $data['status'],
+            'nome' => $data['nome'],
+            'sobrenome' => $data['sobrenome'],
+            'email' => $data['email'],
+            'celular' => $data['celular'],
+            'telefone' => $data['telefone_res'],
+            'oficina' => $data['oficina'],
+            'fantasia'=> $data['fantasia'],
+            'cargo' => $data['cargo'],
+            'ramo'=> $data['ramo'],
+            'estado' => $data['estado'],
+            'cidade' => $data['cidade'],
         ]);
         return redirect()->route('lista.usuarios');
     }
@@ -118,5 +126,5 @@ class CadastroOficinaController extends Controller
         $cadastro = cadastro::select('*')->get();
     return response()->json(['data' => $cadastro]);
     }
-    
+  
 }
