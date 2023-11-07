@@ -118,4 +118,5 @@ class CadastroOficinaController extends Controller
         $cadastro = cadastro::select('*')->get();
     return response()->json(['data' => $cadastro]);
     }
+    
 }

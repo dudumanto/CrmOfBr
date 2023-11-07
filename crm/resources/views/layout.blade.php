@@ -151,8 +151,7 @@
             
                
                 @auth
-                <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
-             <button type="button" id="searchButton" class="btn btn-primary" style=" margin-left:4px"><i class="fas fa-magnifying-glass"></i> Pesquisar</button>
+             
                 
                 <div class=" nav-link text-white d-flex align-items-center ps-5" style="white-space: nowrap; text-shadow: 0px 2px 3px #000000;">Olá, {{ Auth::user()->name }} |&nbsp;</div>
                 <form id="logout-form" action="{{route('auth.logout')}}" class="mb-0" method="post">
