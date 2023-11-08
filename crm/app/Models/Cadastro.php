@@ -10,14 +10,13 @@ class Cadastro extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_contact',
         'cnpj',
         'status',
         'nome',
         'sobrenome',
         'email',
         'celular',
-        'telefone_res',
+        'telefone',
         'oficina',
         'fantasia',
         'cargo',

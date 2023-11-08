@@ -52,7 +52,7 @@ class CadastroOficinaController extends Controller
             'sobrenome' => $data['sobrenome'],
             'email' => $data['email'],
             'celular' => $data['celular'],
-            'telefone' => $data['telefone_res'],
+            'telefone' => $data['telefone'],
             'oficina' => $data['oficina'],
             'fantasia'=> $data['fantasia'],
             'cargo' => $data['cargo'],
@@ -103,7 +103,7 @@ class CadastroOficinaController extends Controller
             'sobrenome' => $data['sobrenome'],
             'email' => $data['email'],
             'celular' => $data['celular'],
-            'telefone' => $data['telefone_res'],
+            'telefone' => $data['telefone'],
             'oficina' => $data['oficina'],
             'fantasia'=> $data['fantasia'],
             'cargo' => $data['cargo'],
@@ -111,7 +111,7 @@ class CadastroOficinaController extends Controller
             'estado' => $data['estado'],
             'cidade' => $data['cidade'],
         ]);
-        return redirect()->route('lista.usuarios');
+        // return redirect()->route('lista.usuarios');
     }
 
     /**

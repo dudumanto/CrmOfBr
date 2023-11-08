@@ -52,30 +52,36 @@
         <table class="table table-hover" id="pesquisa" style="margin-top: 20px; min-width: 100%">
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col">Cnpj</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Sobrenome</th>
                     <th scope="col">Email</th>
                     <th scope="col">Celular</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Oficina</th>
+                    <th scope="col">Fantasia</th>
                     <th scope="col">Cargo</th>
+                    <th scope="col">Ramo</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Cidade</th>
                     <th scope="">Editar</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Aqui, você pode iterar sobre os registros do Laravel e exibi-los na tabela -->
-                <!-- Substitua esta seção pelos seus dados reais -->
                 @foreach($cadastro as $cadastros)
                 <tr>
+                    <td>{{$cadastros->cnpj}}</td>
+                    <td>{{$cadastros->status}}</td>
                     <td>{{$cadastros->nome}}</td>
                     <td>{{$cadastros->sobrenome}}</td>
                     <td>{{$cadastros->email}}</td>
                     <td>{{$cadastros->celular}}</td>
                     <td>{{$cadastros->telefone}}</td>
                     <td>{{$cadastros->oficina}}</td>
+                    <td>{{$cadastros->fantasia}}</td>
                     <td>{{$cadastros->cargo}}</td>
+                    <td>{{$cadastros->ramo}}</td>
                     <td>{{$cadastros->estado}}</td>
                     <td>{{$cadastros->cidade}}</td>
                     <th>
@@ -100,9 +106,9 @@
             var cidadeFiltrar = $('#filtroCidade').val().toLowerCase();
 
             $('table tbody tr').each(function () {
-                var nome = $(this).find('td:eq(0)').text().toLowerCase(); // Índice 0 corresponde à coluna "Nome"
-                var estado = $(this).find('td:eq(7)').text(); // Índice 7 corresponde à coluna "Estado"
-                var cidade = $(this).find('td:eq(8)').text().toLowerCase(); // Índice 8 corresponde à coluna "Cidade"
+                var nome = $(this).find('td:eq(2)').text().toLowerCase(); // Índice 0 corresponde à coluna "Nome"
+                var estado = $(this).find('td:eq(11)').text(); // Índice 7 corresponde à coluna "Estado"
+                var cidade = $(this).find('td:eq(12)').text().toLowerCase(); // Índice 8 corresponde à coluna "Cidade"
 
                 if ((nome.includes(nomeFiltrar) || nomeFiltrar === '') &&
                     (estadoSelecionado === '' || estado === estadoSelecionado) &&
