@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
 
     <body>
-    <div class="container" style="margin-top: 100px;min-height: 700px;">
+    <div class="container" style="margin-top: 100px;min-height: 700px;margin-left:2%">
         <div class="row mt-4" style=" display: flex;align-items: flex-end;" >
         <div class="col-md-3">
                 <label for="filtroNome">Filtrar por Nome:</label>
@@ -36,7 +36,7 @@
                 <select class="form-control" id="filtroEstado">
                     <option value="">Todos</option>
                     <option value="Bahia">Bahia</option>
-                    <option value="São Paulo">São Paulo</option>
+                    <option value="SP">SP</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -44,7 +44,7 @@
                 <input type="text" class="form-control" id="filtroCidade">
             </div>
             <div class="col-md-3">
-                <button class="btn btn-primary" id="aplicarFiltro">Aplicar Filtro</button>
+                <button class="btn btn-primary" id="aplicarFiltro" onclick="filtrarTabela()">Aplicar Filtro</button>
             </div>
         </div>
 
@@ -77,7 +77,7 @@
                     <td>{{$cadastros->sobrenome}}</td>
                     <td>{{$cadastros->email}}</td>
                     <td>{{$cadastros->celular}}</td>
-                    <td>{{$cadastros->telefone}}</td>
+                    <td>{{$cadastros->telefone_res}}</td>
                     <td>{{$cadastros->oficina}}</td>
                     <td>{{$cadastros->fantasia}}</td>
                     <td>{{$cadastros->cargo}}</td>
@@ -99,42 +99,47 @@
 </body>
     <!-- JavaScript para aplicar o filtro -->
     <script>
-    $(document).ready(function () {
-        $('#aplicarFiltro').click(function () {
-            var nomeFiltrar = $('#filtroNome').val().toLowerCase();
-            var estadoSelecionado = $('#filtroEstado').val();
-            var cidadeFiltrar = $('#filtroCidade').val().toLowerCase();
+$(document).ready(function () {
+    $('#aplicarFiltro').click(function () {
+        var nomeFiltrar = $('#filtroNome').val().toLowerCase();
+        var estadoSelecionado = $('#filtroEstado').val();
+        var cidadeFiltrar = $('#filtroCidade').val().toLowerCase();
 
-            $('table tbody tr').each(function () {
-                var nome = $(this).find('td:eq(2)').text().toLowerCase(); // Índice 0 corresponde à coluna "Nome"
-                var estado = $(this).find('td:eq(11)').text(); // Índice 7 corresponde à coluna "Estado"
-                var cidade = $(this).find('td:eq(12)').text().toLowerCase(); // Índice 8 corresponde à coluna "Cidade"
+        $('#pesquisa tbody tr').each(function () {
+            var nome = $(this).find('td:eq(2)').text().toLowerCase(); // Índice 2 corresponde à coluna "Nome"
+            var estado = $(this).find('td:eq(11)').text(); // Índice 11 corresponde à coluna "Estado"
+            var cidade = $(this).find('td:eq(12)').text().toLowerCase(); // Índice 12 corresponde à coluna "Cidade"
 
-                if ((nome.includes(nomeFiltrar) || nomeFiltrar === '') &&
-                    (estadoSelecionado === '' || estado === estadoSelecionado) &&
-                    (cidade.includes(cidadeFiltrar) || cidadeFiltrar === '')) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
+            if ((nome.includes(nomeFiltrar) || nomeFiltrar === '') &&
+                (estadoSelecionado === '' || estado === estadoSelecionado) &&
+                (cidade.includes(cidadeFiltrar) || cidadeFiltrar === '')) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
         });
     });
-    </script>
+});
+</script>
+<script>
+$(document).ready(function () {
+    $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $('#pesquisa tbody tr').each(function () {
+            var rowText = $(this).text().toLowerCase();
+            if (rowText.includes(value)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
+</script>
 
 
 
-
-  <script>
-            $(document).ready(function() {
-                $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#pesquisa tr").filter(function() {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-    </script>
+ 
    
 </div>
 

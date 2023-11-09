@@ -59,6 +59,14 @@
 
                             <div class="row">
                                 <div class="form-group col-sm-6  col-12">
+                                    <label for="nome" class="text-white font-celular">{{ __('Status') }}</label>
+                                    <input id="nome" type="text" class="form-control" name="status" value="{{$cadastro->status}}" required>
+                                </div>
+                                <div class="form-group col-sm-6  col-12">
+                                    <label for="nome" class="text-white font-celular">{{ __('CNPJ') }}</label>
+                                    <input id="nome" type="text" class="form-control" name="cnpj" value="{{$cadastro->cnpj}}" required>
+                                </div>
+                                <div class="form-group col-sm-6  col-12">
                                     <label for="nome" class="text-white font-celular">{{ __('Nome') }}</label>
                                     <input id="nome" type="text" class="form-control" name="nome" value="{{$cadastro->nome}}" required>
                                 </div>
@@ -85,7 +93,7 @@
 
                             <div class="form-group">
                                 <label for="telefone" class="text-white font-celular">{{ __('Telefone') }}</label>
-                                <input id="telefone" type="text" class="form-control" name="telefone" value="{{$cadastro->telefone}}" required>
+                                <input id="telefone" type="text" class="form-control" name="telefone_res" value="{{$cadastro->telefone_res}}" required>
                             </div>
 
                             <div class="form-group">
@@ -93,8 +101,16 @@
                                 <input id="oficina" type="text" class="form-control" name="oficina" value="{{$cadastro->oficina}}" required>
                             </div>
                             <div class="form-group">
+                                <label for="cargo" class="text-white font-celular">{{ __('Fantasia') }}</label>
+                                <input id="cargo" type="text" class="form-control" name="fantasia" value="{{$cadastro->fantasia}}" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="cargo" class="text-white font-celular">{{ __('Cargo') }}</label>
                                 <input id="cargo" type="text" class="form-control" name="cargo" value="{{$cadastro->cargo}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo" class="text-white font-celular">{{ __('Ramo') }}</label>
+                                <input id="cargo" type="text" class="form-control" name="ramo" value="{{$cadastro->ramo}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="estado" class="text-white font-celular">{{ __('Estado') }}</label>

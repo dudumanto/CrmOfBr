@@ -16,7 +16,7 @@ class Cadastro extends Model
         'sobrenome',
         'email',
         'celular',
-        'telefone',
+        'telefone_res',
         'oficina',
         'fantasia',
         'cargo',

@@ -89,7 +89,7 @@
 
                             <div class="form-group">
                                 <label for="telefone" class="text-white font-celular">{{ __('Telefone') }}</label>
-                                <input id="telefone" type="text" class="form-control" name="telefone" required>
+                                <input id="telefone" type="text" class="form-control" name="telefone_res" required>
                             </div>
 
                             <div class="form-group">

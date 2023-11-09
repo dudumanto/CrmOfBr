@@ -8,7 +8,7 @@ class CadastroOficinaController extends Controller
 {
     public function dashboard()
     {
-        $cadastro = Cadastro::paginate(10);
+        $cadastro = Cadastro::paginate(5);
     
         return view('listausuarios', compact('cadastro'));
     }
@@ -52,7 +52,7 @@ class CadastroOficinaController extends Controller
             'sobrenome' => $data['sobrenome'],
             'email' => $data['email'],
             'celular' => $data['celular'],
-            'telefone' => $data['telefone'],
+            'telefone_res' => $data['telefone_res'],
             'oficina' => $data['oficina'],
             'fantasia'=> $data['fantasia'],
             'cargo' => $data['cargo'],
@@ -97,13 +97,13 @@ class CadastroOficinaController extends Controller
     {
         $data = $request ->all();
         $cadastro =Cadastro ::find($id)->update([
-            'cnpj' => $data['cnpj'],
+            'cnpj'=> $data['cnpj'],
             'status'=> $data['status'],
             'nome' => $data['nome'],
             'sobrenome' => $data['sobrenome'],
             'email' => $data['email'],
             'celular' => $data['celular'],
-            'telefone' => $data['telefone'],
+            'telefone_res' => $data['telefone_res'],
             'oficina' => $data['oficina'],
             'fantasia'=> $data['fantasia'],
             'cargo' => $data['cargo'],
@@ -111,12 +111,9 @@ class CadastroOficinaController extends Controller
             'estado' => $data['estado'],
             'cidade' => $data['cidade'],
         ]);
-        // return redirect()->route('lista.usuarios');
+         return redirect()->route('lista.usuarios');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
