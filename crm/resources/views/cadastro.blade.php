@@ -65,6 +65,10 @@
 
                             <div class="row">
                             <div class="form-group col-sm-6  col-12">
+                                    <label for="cep" class="text-white font-celular">{{ __('Cep') }}</label>
+                                    <input id="cep" type="text" class="form-control" name="cep" required>
+                            </div>
+                            <div class="form-group col-sm-6  col-12">
                                     <label for="status" class="text-white font-celular">{{ __('Status') }}</label>
                                     <input id="status" type="text" class="form-control" name="status" required>
                                 </div>
@@ -101,6 +105,10 @@
                             <div class="form-group">
                                 <label for="oficina" class="text-white font-celular">{{ __('Oficina') }}</label>
                                 <input id="oficina" type="text" class="form-control" name="oficina" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="logradouro" class="text-white font-celular">{{ __('Logradouro') }}</label>
+                                <input id="logradouro" type="text" class="form-control" name="logradouro" required>
                             </div>
                             <div class="form-group">
                                 <label for="fantasia" class="text-white font-celular">{{ __('Fantasia') }}</label>
@@ -155,6 +163,36 @@
             $('#nascimento').mask('99/99/9999');
         });
     </script>
+    <script>
+    $(document).ready(function () {
+        function limparCamposEndereco() {
+            $('#estado').val('');
+            $('#cidade').val('');
+            $('#logradouro').val('');
+        }
+
+        $('#cep').mask('99999-999');
+
+        $('#cep').blur(function () {
+            var cep = $(this).val().replace(/\D/g, '');
+
+            if (cep.length == 8) {
+                $.getJSON(`https://viacep.com.br/ws/${cep}/json/`, function (data) {
+                    if (!data.erro) {
+                        $('#estado').val(data.uf);
+                        $('#cidade').val(data.localidade);
+                        $('#logradouro').val(data.logradouro);
+                    } else {
+                        limparCamposEndereco();
+                        alert('CEP não encontrado');
+                    }
+                });
+            } else {
+                limparCamposEndereco();
+            }
+        });
+    });
+</script>
 
 
 

@@ -57,8 +57,10 @@ class CadastroOficinaController extends Controller
         }
 
         $cadastro = Cadastro::create([
+            'cep' => $data['cep'],
             'cnpj' => $data['cnpj'],
             'status'=> $data['status'],
+            'logradouro'=> $data['logradouro'],
             'nome' => $data['nome'],
             'sobrenome' => $data['sobrenome'],
             'email' => $data['email'],
@@ -108,8 +110,10 @@ class CadastroOficinaController extends Controller
     {
         $data = $request ->all();
         $cadastro =Cadastro ::find($id)->update([
+            'cep'=> $data['cep'],
             'cnpj'=> $data['cnpj'],
             'status'=> $data['status'],
+            'logradouro'=> $data['logradouro'],
             'nome' => $data['nome'],
             'sobrenome' => $data['sobrenome'],
             'email' => $data['email'],

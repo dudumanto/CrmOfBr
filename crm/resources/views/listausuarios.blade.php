@@ -36,6 +36,7 @@
         <table class="table table-hover" id="pesquisa" style="margin-top: 20px; min-width: 100%">
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col">Cep</th>
                     <th scope="col">Cnpj</th>
                     <th scope="col">Status</th>
                     <th scope="col">Nome</th>
@@ -45,6 +46,7 @@
                     <th scope="col">Telefone</th>
                     <th scope="col">Oficina</th>
                     <th scope="col">Fantasia</th>
+                    <th scope="col">Logradouro</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Ramo</th>
                     <th scope="col">Estado</th>
@@ -55,6 +57,7 @@
             <tbody>
                 @foreach($cadastro as $cadastros)
                 <tr>
+                    <td>{{$cadastros->cep}}</td>
                     <td>{{$cadastros->cnpj}}</td>
                     <td>{{$cadastros->status}}</td>
                     <td>{{$cadastros->nome}}</td>
@@ -64,6 +67,7 @@
                     <td>{{$cadastros->telefone_res}}</td>
                     <td>{{$cadastros->oficina}}</td>
                     <td>{{$cadastros->fantasia}}</td>
+                    <td>{{$cadastros->logradouro}}</td>
                     <td>{{$cadastros->cargo}}</td>
                     <td>{{$cadastros->ramo}}</td>
                     <td>{{$cadastros->estado}}</td>

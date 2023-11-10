@@ -10,6 +10,8 @@ class Cadastro extends Model
     use HasFactory;
 
     protected $fillable = [
+        'cep',
+        'logradouro',
         'cnpj',
         'status',
         'nome',
