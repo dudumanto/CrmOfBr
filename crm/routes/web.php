@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/listausuarios',[CadastroOficinaController::class,'dashboard'])->name('lista.usuarios');
     Route::get('/edicaocadastro/{id}',[CadastroOficinaController::class,'edit'])->name('edicao.cadastro');
     Route::post('/update/{id}',[CadastroOficinaController::class,'update'])->name('edicao.update');
+    Route::any('/post/search',[CadastroOficinaController::class,'search'])->name('post.search');
 
 
 

@@ -1,5 +1,11 @@
 @extends('layout')
 <div id="inscricao" style="background-image: url('fundo-login.jpg'); background-size: cover; background-position: center; ">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- jQuery Mask Plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
     @section('content')
 
     <!-- @auth
@@ -59,12 +65,12 @@
 
                             <div class="row">
                             <div class="form-group col-sm-6  col-12">
-                                    <label for="nome" class="text-white font-celular">{{ __('Status') }}</label>
-                                    <input id="nome" type="text" class="form-control" name="status" required>
+                                    <label for="status" class="text-white font-celular">{{ __('Status') }}</label>
+                                    <input id="status" type="text" class="form-control" name="status" required>
                                 </div>
                             <div class="form-group col-sm-6  col-12">
-                                    <label for="nome" class="text-white font-celular">{{ __('Cnpj') }}</label>
-                                    <input id="nome" type="text" class="form-control" name="cnpj" required>
+                                    <label for="cnpj" class="text-white font-celular">{{ __('Cnpj') }}</label>
+                                    <input id="cnpj" type="text" class="form-control" name="cnpj" required>
                                 </div>
                                 
                                 <div class="form-group col-sm-6  col-12">
@@ -97,16 +103,16 @@
                                 <input id="oficina" type="text" class="form-control" name="oficina" required>
                             </div>
                             <div class="form-group">
-                                <label for="cargo" class="text-white font-celular">{{ __('Fantasia') }}</label>
-                                <input id="cargo" type="text" class="form-control" name="fantasia" required>
+                                <label for="fantasia" class="text-white font-celular">{{ __('Fantasia') }}</label>
+                                <input id="fantasia" type="text" class="form-control" name="fantasia" required>
                             </div>
                             <div class="form-group">
                                 <label for="cargo" class="text-white font-celular">{{ __('Cargo') }}</label>
                                 <input id="cargo" type="text" class="form-control" name="cargo" required>
                             </div>
                             <div class="form-group">
-                                <label for="estado" class="text-white font-celular">{{ __('Ramo') }}</label>
-                                <input id="estado" type="text" class="form-control" name="ramo" required>
+                                <label for="ramo" class="text-white font-celular">{{ __('Ramo') }}</label>
+                                <input id="ramo" type="text" class="form-control" name="ramo" required>
                             </div>
                             <div class="form-group">
                                 <label for="estado" class="text-white font-celular">{{ __('Estado') }}</label>
@@ -135,7 +141,20 @@
             </div>
         </div>
     </div>
+   
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#cnpj').mask('99.999.999/9999-99');
+            $('#celular').mask('(99) 9999-99999');
+            $('#telefone').mask('(99) 9999-99999');
+            $('#cep').mask('99999-999');
+            $('#nascimento').mask('99/99/9999');
+        });
+    </script>
 
 
 

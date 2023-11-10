@@ -8,9 +8,20 @@ class CadastroOficinaController extends Controller
 {
     public function dashboard()
     {
-        $cadastro = Cadastro::paginate(5);
+        $cadastro = Cadastro::paginate(20);
     
         return view('listausuarios', compact('cadastro'));
+    }
+
+    public function search(Request $request){
+        // para fazer o filtro no back end, pois não dava pra fazer pelo front 
+        $filters = $request->all();
+        $cadastro = Cadastro::where('nome', 'like', "%{$request->search}%")
+                            ->orWhere('cnpj', 'like', "%{$request->search}%")
+                            ->paginate(20);
+    
+        // Passa a variável $request para a view
+        return view('listausuarios', compact('cadastro','filters'))->with('request', $request);                  
     }
     /**
      * Show the form for creating a new resource.
