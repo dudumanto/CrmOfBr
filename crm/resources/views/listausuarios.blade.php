@@ -31,44 +31,45 @@
             <input type="text" name="search"  placeholder="Pesquisar">
             <button type="submit"> Filtrar</button>
         </form>
+        <button onclick="downloadCSV()" class="btn btn-primary">Download CSV</button>
 
         <!-- Tabela de Cadastros -->
         <table class="table table-hover" id="pesquisa" style="margin-top: 20px; min-width: 100%">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Cep</th>
+                    <!-- <th scope="col">Cep</th> -->
                     <th scope="col">Cnpj</th>
                     <th scope="col">Status</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Sobrenome</th>
+                    <!-- <th scope="col">Sobrenome</th> -->
                     <th scope="col">Email</th>
                     <th scope="col">Celular</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Oficina</th>
                     <th scope="col">Fantasia</th>
                     <th scope="col">Logradouro</th>
-                    <th scope="col">Cargo</th>
+                    <!-- <th scope="col">Cargo</th> -->
                     <th scope="col">Ramo</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Cidade</th>
-                    <th scope="">Editar</th>
+                    <th scope="col">Editar</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($cadastro as $cadastros)
                 <tr>
-                    <td>{{$cadastros->cep}}</td>
+                    <!-- <td>{{$cadastros->cep}}</td> -->
                     <td>{{$cadastros->cnpj}}</td>
                     <td>{{$cadastros->status}}</td>
                     <td>{{$cadastros->nome}}</td>
-                    <td>{{$cadastros->sobrenome}}</td>
+                    <!-- <td>{{$cadastros->sobrenome}}</td> -->
                     <td>{{$cadastros->email}}</td>
                     <td>{{$cadastros->celular}}</td>
                     <td>{{$cadastros->telefone_res}}</td>
                     <td>{{$cadastros->oficina}}</td>
                     <td>{{$cadastros->fantasia}}</td>
                     <td>{{$cadastros->logradouro}}</td>
-                    <td>{{$cadastros->cargo}}</td>
+                    <!-- <td>{{$cadastros->cargo}}</td> -->
                     <td>{{$cadastros->ramo}}</td>
                     <td>{{$cadastros->estado}}</td>
                     <td>{{$cadastros->cidade}}</td>
@@ -90,7 +91,11 @@
     </div>
     
 </body>
-  
+<script>
+        function downloadCSV() {
+            window.location.href = "{{ route('export.csv') }}";
+        }
+    </script>
    
 
 

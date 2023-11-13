@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cadastro;
+use App\Models\Logs;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 class CadastroOficinaController extends Controller
 {
     public function dashboard()
@@ -74,7 +78,14 @@ class CadastroOficinaController extends Controller
             'cidade' => $data['cidade'],
         ]);
 
+        
         if ($cadastro) {
+            // Registrar a criação do cadastro no log
+            $log = new Logs();
+            $log->user_id = auth()->user()->id;
+            $log->cadastro_id = $cadastro->id;
+            $log->save();
+
             return redirect('/listausuarios')->with('success', 'Cadastro realizado com sucesso!');
             
         } else {
@@ -138,5 +149,37 @@ class CadastroOficinaController extends Controller
         $cadastro = cadastro::select('*')->get();
     return response()->json(['data' => $cadastro]);
     }
-  
+    public function exportCSV()
+    {
+        $cadastros = Cadastro::all();
+
+        $csvFileName = 'cadastros.csv';
+        $headers = array(
+            "Content-type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=$csvFileName",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0",
+            "Content-Encoding" => "UTF-8",
+            "Delimiter" => ";",
+        );
+
+        $response = new StreamedResponse(function () use ($cadastros) {
+            $handle = fopen('php://output', 'w');
+
+            // Adiciona cabeçalhos CSV
+            fputcsv($handle, array('ID', 'Nome', 'Email','CNPJ'),';');
+
+            // Adiciona dados ao CSV
+            foreach ($cadastros as $cadastro) {
+                fputcsv($handle, array($cadastro->id, $cadastro->nome, $cadastro->email,$cadastro->cnpj),';');
+            }
+
+            fclose($handle);
+        });
+
+                $response->headers->add($headers);
+
+                return $response;
+    }
 }

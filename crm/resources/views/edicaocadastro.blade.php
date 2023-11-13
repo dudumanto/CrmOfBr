@@ -56,8 +56,12 @@
                     <div class="card-body">
                         <form method="post" action="{{route('edicao.update',$cadastro->id)}}" class="d-flex flex-column gap-3 ">
                             @csrf
-
+                     
                             <div class="row">
+                            <div class="form-group col-sm-6  col-12">
+                                    <label for="cep" class="text-white font-celular">{{ __('Cep') }}</label>
+                                    <input id="cep" type="text" class="form-control" name="cep" value="{{$cadastro->cep}}" required>
+                            </div>
                                 <div class="form-group col-sm-6  col-12">
                                     <label for="nome" class="text-white font-celular">{{ __('Status') }}</label>
                                     <input id="nome" type="text" class="form-control" name="status" value="{{$cadastro->status}}" required>
@@ -76,10 +80,6 @@
                                     <input id="sobrenome" type="text" class="form-control" name="sobrenome" value="{{$cadastro->sobrenome}}" required>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
-                            <label for="cpf">{{ __('CPF') }}</label>
-                            <input id="cpf" type="text" class="form-control" name="cpf" required>
-                        </div> -->
 
                             <div class="form-group">
                                 <label for="email" class="text-white font-celular">{{ __('E-mail') }}</label>
@@ -99,6 +99,10 @@
                             <div class="form-group">
                                 <label for="oficina" class="text-white font-celular">{{ __('Oficina') }}</label>
                                 <input id="oficina" type="text" class="form-control" name="oficina" value="{{$cadastro->oficina}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="logradouro" class="text-white font-celular">{{ __('Logradouro') }}</label>
+                                <input id="logradouro" type="text" class="form-control" name="logradouro" value="{{$cadastro->logradouro}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="cargo" class="text-white font-celular">{{ __('Fantasia') }}</label>
