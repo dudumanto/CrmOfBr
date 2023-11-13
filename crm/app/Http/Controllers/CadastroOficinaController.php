@@ -84,6 +84,7 @@ class CadastroOficinaController extends Controller
             $log = new Logs();
             $log->user_id = auth()->user()->id;
             $log->cadastro_id = $cadastro->id;
+
             $log->save();
 
             return redirect('/listausuarios')->with('success', 'Cadastro realizado com sucesso!');
@@ -120,24 +121,59 @@ class CadastroOficinaController extends Controller
     //vai alterar os registros na tabela e no cadastro
     {
         $data = $request ->all();
-        $cadastro =Cadastro ::find($id)->update([
-            'cep'=> $data['cep'],
-            'cnpj'=> $data['cnpj'],
-            'status'=> $data['status'],
-            'logradouro'=> $data['logradouro'],
-            'nome' => $data['nome'],
-            'sobrenome' => $data['sobrenome'],
-            'email' => $data['email'],
-            'celular' => $data['celular'],
-            'telefone_res' => $data['telefone_res'],
-            'oficina' => $data['oficina'],
-            'fantasia'=> $data['fantasia'],
-            'cargo' => $data['cargo'],
-            'ramo'=> $data['ramo'],
-            'estado' => $data['estado'],
-            'cidade' => $data['cidade'],
-        ]);
-         return redirect()->route('lista.usuarios');
+        $cadastro = Cadastro::find($id) ?? false;
+
+        if ($cadastro) {
+            // Validar os dados do formulário
+            $this->validate($request, [
+                'cep' => 'required',
+                'cnpj' => 'required',
+                'status'=> 'required',
+                'logradouro'=> 'required',
+                'nome' => 'required',
+                'sobrenome' => 'required',
+                'email' => 'required|email',
+                'celular' => 'required',
+                'telefone_res' => 'required',
+                'oficina' => 'required',
+                'fantasia'=> 'required',
+                'cargo' => 'required',
+                'ramo'=> 'required',
+                'estado' => 'required',
+                'cidade' => 'required',
+            ]);
+
+            // Alterar os dados do cadastro
+            $cadastro->cep = $data['cep'];
+            $cadastro->cnpj = $data['cnpj'];
+            $cadastro->status = $data['status'];
+            $cadastro->logradouro = $data['logradouro'];
+            $cadastro->nome = $data['nome'];
+            $cadastro->sobrenome = $data['sobrenome'];
+            $cadastro->email = $data['email'];
+            $cadastro->celular = $data['celular'];
+            $cadastro->telefone_res = $data['telefone_res'];
+            $cadastro->oficina = $data['oficina'];
+            $cadastro->fantasia = $data['fantasia'];
+            $cadastro->cargo = $data['cargo'];
+            $cadastro->ramo = $data['ramo'];
+            $cadastro->estado = $data['estado'];
+            $cadastro->cidade = $data['cidade'];
+
+            // Registrar a alteração no log
+            $log = new Logs();
+            $log->user_id = auth()->user()->id;
+            $log->cadastro_id = $cadastro->id;
+            $log->save();
+
+            // Salvar as alterações
+            $cadastro->save();
+
+            // Retornar uma mensagem de sucesso
+            return redirect()->route('lista.usuarios');
+        } else {
+            return redirect()->route('lista.usuarios')->with('error', 'O cadastro não existe.');
+        }
     }
 
     public function destroy(string $id)
