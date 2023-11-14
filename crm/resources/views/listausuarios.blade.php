@@ -26,12 +26,18 @@
 
     <body>
     <div class="container" style="margin-top: 100px;min-height: 700px;margin-left:2%">
-        <form action="{{route('post.search')}}" method="post">
+    <div style="display: flex;">
+    <form action="{{route('post.search')}}" method="post">
             @csrf
-            <input type="text" name="search"  placeholder="Pesquisar">
-            <button type="submit" class="btn btn-primary"> Filtrar</button>
+            <div class="form-group" style="display: flex;">
+            <input type="text" name="search" class="form-control" style="width: 250px;" placeholder="Pesquisar">
+            <button type="submit" class="btn btn-primary" style="width: 150px;height: 36px;margin-left: 30px;"> Filtrar</button>
+            </div>
+          
         </form>
-        <button onclick="downloadCSV()" class="btn btn-primary">Download CSV</button>
+        <button onclick="downloadCSV()" class="btn btn-primary" style="width: 150px;height: 36px;margin-left: 30px;">Download CSV</button>
+    </div>
+       
 
         <!-- Tabela de Cadastros -->
         <table class="table table-hover" id="pesquisa" style="margin-top: 20px; min-width: 100%">

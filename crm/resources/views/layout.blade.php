@@ -134,8 +134,7 @@
         <div class="container-fluid w-100 d-flex justify-content-between" style="background-color:black;">
 
             <a href="/" style="text-decoration:none" class="text-white d-flex">
-                <img src="/SELO_OB.png" style="height: 120px;" class="logo-header"></img>
-                <img src="/Marcas_Oficinas_Logo_2023.png" style="height: 110px;" class=" logo-header p-1"></img>
+                <img src="/img/OB-RODA-PE.png" style="height: 120px;" class="logo-header"></img>
             </a>
 
             <button class="navbar-toggler border-white border-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
