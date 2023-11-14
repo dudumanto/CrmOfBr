@@ -29,7 +29,7 @@
         <form action="{{route('post.search')}}" method="post">
             @csrf
             <input type="text" name="search"  placeholder="Pesquisar">
-            <button type="submit"> Filtrar</button>
+            <button type="submit" class="btn btn-primary"> Filtrar</button>
         </form>
         <button onclick="downloadCSV()" class="btn btn-primary">Download CSV</button>
 
