@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::get('/',[UserController::class,'index'])->name('home.login');
 //rota para enviar dados
+Route::get('/', function () {
+    return view('login');
+});
 Route::get('/login',[UserController::class,'index']);
 Route::post('/login',[UserController::class,'login'])->name('login');
 

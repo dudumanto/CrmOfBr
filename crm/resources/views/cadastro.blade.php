@@ -1,5 +1,5 @@
 @extends('layout')
-<div id="inscricao" style="background-image: url('fundo-login.jpg'); background-size: cover; background-position: center; ">
+<div id="inscricao" style="background-image: url('fundo-login.jpg'); background-color:black; background-size: cover; background-position: center; ">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -54,6 +54,20 @@
 
 
     <div class="container" style="padding-top:120px; padding-bottom:120px">
+             <button class="btn btn-primary" style="background-color:#fffafa; color:black;" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+            Menu
+            </button>
+
+            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="staticBackdropLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <a href="{{route('lista.usuarios')}}">Editar</a>
+            </div>
+            </div>
+    
         <div class="row justify-content-center">
             <div class="col-sm-12 col-lg-8">
                 <div class="bg-black bg-opacity-75 p-5 d-flex flex-column gap-3 my-5">

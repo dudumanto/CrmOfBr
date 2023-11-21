@@ -24,43 +24,7 @@
     @endif -->
 
 
-    <div class="container">
-        @if(session('success'))
 
-        <script>
-            let timerInterval
-            Swal.fire({
-                title: 'Aguarde enquanto estamos Validando o seu cadastro',
-                allowEscapeKey: false,
-                allowOutsideClick: false,
-                // html: 'I will close in <b></b> milliseconds.',
-                timer: 3000,
-                // timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Inscrição realizada com sucesso!',
-                    confirmButtonText: 'Fechar',
-                }).then((result) => {
-                    if (result.isConfirmed || result.isDismissed) {
-                        window.location.replace('/')
-                    }
-                });
-            })
-        </script>
-        @endif
-        <!-- Restante do conteúdo da página de cadastro aqui -->
-    </div>
 
 
 
