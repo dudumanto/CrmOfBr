@@ -48,13 +48,10 @@
             $('.phone').mask(behavior, options);
         });
     </script>
-    
-
-
-
-
-    <div class="container" style="padding-top:120px; padding-bottom:120px">
-             <button class="btn btn-primary" style="background-color:#fffafa; color:black;" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   <div>
+   <button class="btn btn-primary" style="background-color:#fffafa; color:black;    margin-top: 110px;
+    margin-left: 30px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
             Menu
             </button>
 
@@ -64,9 +61,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-              <a href="{{route('lista.usuarios')}}">Editar</a>
+            <i class="fa-solid fa-users"></i>  <a href="{{route('lista.usuarios')}}" style="color: black;">Lista de Usuários</a>
             </div>
             </div>
+    
+   </div>
+
+
+
+
+    <div class="container" style="padding-top:120px; padding-bottom:120px">
+             <!-- <button class="btn btn-primary" style="background-color:#fffafa; color:black;" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+            Menu
+            </button>
+
+            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="staticBackdropLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            <i class="fa-solid fa-users"></i>  <a href="{{route('lista.usuarios')}}" style="color: black;">Lista de Usuários</a>
+            </div>
+            </div> -->
     
         <div class="row justify-content-center">
             <div class="col-sm-12 col-lg-8">
