@@ -61,7 +61,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-            <i class="fa-solid fa-users"></i>  <a href="{{route('lista.usuarios')}}" style="color: black;">Lista de Usuários</a>
+            <i class="fa-solid fa-users"></i>  <a href="{{route('lista.usuarios')}}" style="color: black;">Lista e Edição de Usuários</a>
             </div>
             </div>
     
@@ -85,7 +85,7 @@
             </div>
             </div> -->
     
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top:-200px;">
             <div class="col-sm-12 col-lg-8">
                 <div class="bg-black bg-opacity-75 p-5 d-flex flex-column gap-3 my-5">
                     <div class="border-3 border-bot border-blue fw-bolder text-white mb-3" style="font-size: 35px; width:fit-content">{{ __('INSCREVA-SE') }}</div>

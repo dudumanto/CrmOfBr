@@ -48,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update/{id}',[CadastroOficinaController::class,'update'])->name('edicao.update');
     Route::any('/post/search',[CadastroOficinaController::class,'search'])->name('post.search');
     Route::get('/export-csv',[CadastroOficinaController::class,'exportCSV'])->name('export.csv');
+    Route::get('/cadastrousuario',[CadastroUserController::class,'index'])
+    ->name('cadastrouser.cadastrousuario')
+    ->middleware('admin');
+    Route::post('/create',[CadastroUserController::class,'create'])->name('user.create');
 
 
 
