@@ -18,15 +18,26 @@ class CadastroOficinaController extends Controller
     }
 
     public function search(Request $request){
-        // para fazer o filtro no back end, pois não dava pra fazer pelo front 
+        // para fazer o filtro no backend, pois não dava para fazer pelo front
         $filters = $request->all();
-        $cadastro = Cadastro::where('nome', 'like', "%{$request->search}%")
-                            ->orWhere('cnpj', 'like', "%{$request->search}%")
-                            ->orWhere('estado', 'like', "%{$request->search}%")
-                            ->paginate(20);
+    
+        $cadastro = Cadastro::query();
+    
+        if ($request->filled('nome')) {
+            $cadastro->where('nome', 'like', "%{$request->nome}%");
+        }
+    
+        if ($request->filled('estado')) {
+            $cadastro->where('estado', 'like', "%{$request->estado}%");
+        }
+        if ($request->filled('cidade')) {
+            $cadastro->where('cidade', 'like', "%{$request->cidade}%");
+        }
+    
+        $cadastro = $cadastro->paginate(20);
     
         // Passa a variável $request para a view
-        return view('listausuarios', compact('cadastro','filters'))->with('request', $request);                  
+        return view('listausuarios', compact('cadastro', 'filters'))->with('request', $request);
     }
     /**
      * Show the form for creating a new resource.

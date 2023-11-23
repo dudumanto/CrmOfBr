@@ -46,9 +46,12 @@
         <form action="{{route('post.search')}}" method="post">
             @csrf
             <div class="form-group" style="display: flex;">
-            <input type="text" name="search" class="form-control" style="width: 250px;" placeholder="Pesquisar">
+            <input type="text" name="nome" class="form-control" style="width: 250px;" placeholder="Nome">
+            <input type="text" name="estado" class="form-control" style="width: 250px;" placeholder="Estado">
+            <input type="text" name="cidade" class="form-control" style="width: 250px;" placeholder="Cidade">
             <button type="submit" class="btn btn-primary" style="width: 150px;height: 36px;margin-left: 30px; background-color:#003078; color:white;"> Filtrar</button>
             </div>
+           
           
         </form>
         <button onclick="downloadCSV()" class="btn btn-primary" style="width: 150px;height: 36px;margin-left: 30px; background-color:#003078; color:white;">Download CSV</button>
