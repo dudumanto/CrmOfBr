@@ -22,6 +22,7 @@ class CadastroOficinaController extends Controller
         $filters = $request->all();
         $cadastro = Cadastro::where('nome', 'like', "%{$request->search}%")
                             ->orWhere('cnpj', 'like', "%{$request->search}%")
+                            ->orWhere('estado', 'like', "%{$request->search}%")
                             ->paginate(20);
     
         // Passa a variável $request para a view
