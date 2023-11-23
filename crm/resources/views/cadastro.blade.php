@@ -182,7 +182,7 @@
 
                             <div class="form-group w-100 mt-5">
                             <!-- <button class="btn btn-primary w-100" type="submit" id="submitForm" onclick="submitForm()">Enviar</button> -->
-                            <button onclick="submitFormWithAlert()" type="submit" id="submitForm" class="btn w-100 text-white font-celular" style="
+                            <button onclick="validarCampos()" type="submit" id="submitForm" class="btn w-100 text-white font-celular" style="
                                 background: rgb(0,48,120);
                                 background: linear-gradient(34deg, rgba(0,48,120,1) 0%, rgba(0,48,120,1) 25%, rgba(0,71,139,1) 62%, rgba(3,128,247,1) 100%);
                                 font-weight: bold;
@@ -201,6 +201,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
 
     <script>
         $(document).ready(function(){
@@ -241,9 +242,43 @@
         });
     });
 </script>
-
-
 <script>
+    function validarCampos() {
+        var cep = $('#cep').val();
+        var status = $('#status').val();
+        var cnpj = $('#cnpj').val();
+        var nome = $('#nome').val();
+        var sobrenome = $('#sobrenome').val();
+        var email = $('#email').val();
+        var celular = $('#celular').val();
+        var telefone = $('#telefone').val();
+        var oficina = $('#oficina').val();
+        var logradouro = $('#logradouro').val();
+        var fantasia = $('#fantasia').val();
+        var cargo = $('#cargo').val();
+        var ramo = $('#ramo').val();
+        var estado = $('#estado').val();
+        var cidade = $('#cidade').val();
+
+        if (
+            cep && status && cnpj && nome && sobrenome &&
+            email && celular && telefone && oficina &&
+            logradouro && fantasia && cargo && ramo &&
+            estado && cidade
+        ) {
+            // Todos os campos estão preenchidos, chama a função de sucesso
+            submitFormWithAlert();
+        } else {
+            // Se algum campo não estiver preenchido, exibe uma mensagem de erro
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Por favor, preencha todos os campos antes de cadastrar.',
+                confirmButtonText: 'OK'
+            });
+        }
+    }
+
     function submitFormWithAlert() {
         // Adicione aqui a lógica para enviar o formulário, se necessário
 
@@ -252,7 +287,7 @@
             icon: 'success',
             title: 'Cadastro realizado com sucesso!',
             showConfirmButton: false,
-            timer: 4000 // Tempo em milissegundos (1.5 segundos)
+            timer: 4000 // Tempo em milissegundos (4 segundos)
         }).then(() => {
             // Redireciona para a nova tela
             window.location.href = '/listausuarios';
@@ -261,6 +296,9 @@
         // Adicione aqui lógica adicional, se necessário, após exibir o SweetAlert2
     }
 </script>
+
+
+
 
 
 

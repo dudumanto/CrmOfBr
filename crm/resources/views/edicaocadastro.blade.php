@@ -44,7 +44,7 @@
     </script>
     
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     <div class="container" style="padding-top:120px; padding-bottom:120px">
@@ -128,14 +128,14 @@
 
                             <div class="form-group w-100 mt-5">
                             <!-- <button class="btn btn-primary w-100" type="submit" id="submitForm" onclick="submitForm()">Enviar</button> -->
-                                <button onclick="submitForm()" type="submit" id="submitForm" class="btn w-100 text-white font-celular" style="   
-                                        background: rgb(0,48,120);
-                                        background: linear-gradient(34deg, rgba(0,48,120,1) 0%, rgba(0,48,120,1) 25%, rgba(0,71,139,1) 62%, rgba(3,128,247,1) 100%);
-                                            font-weight: bold;
-                                            font-size: 30px;
-                                            border: 1px solid #333;">
-                                    {{ __('Atualizar') }}
-                                </button>
+                            <button onclick="submitFormWithAlert()" type="submit" id="submitForm" class="btn w-100 text-white font-celular" style="
+                                background: rgb(0,48,120);
+                                background: linear-gradient(34deg, rgba(0,48,120,1) 0%, rgba(0,48,120,1) 25%, rgba(0,71,139,1) 62%, rgba(3,128,247,1) 100%);
+                                font-weight: bold;
+                                font-size: 30px;
+                                border: 1px solid #333;">
+                                {{ __('Atualizar') }}
+                            </button>
                             </div>
                          </form> 
                     </div>
@@ -144,6 +144,24 @@
         </div>
     </div>
 </div>
+<script>
+    function submitFormWithAlert() {
+        // Adicione aqui a lógica para enviar o formulário, se necessário
+
+        // Exibe o SweetAlert2 após o envio bem-sucedido do formulário
+        Swal.fire({
+            icon: 'success',
+            title: 'Atualização realizada com sucesso!',
+            showConfirmButton: false,
+            timer: 4000 // Tempo em milissegundos (1.5 segundos)
+        }).then(() => {
+            // Redireciona para a nova tela
+            window.location.href = '/listausuarios';
+        });
+
+        // Adicione aqui lógica adicional, se necessário, após exibir o SweetAlert2
+    }
+</script>
 
 
 @endsection
