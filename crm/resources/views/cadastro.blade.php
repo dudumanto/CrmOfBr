@@ -48,6 +48,8 @@
             $('.phone').mask(behavior, options);
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
             <div>
                     <button class="btn btn" style="   margin-top: 110px; margin-left: 30px; background-color:#003078; color:white;" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
@@ -180,14 +182,14 @@
 
                             <div class="form-group w-100 mt-5">
                             <!-- <button class="btn btn-primary w-100" type="submit" id="submitForm" onclick="submitForm()">Enviar</button> -->
-                                <button onclick="submitForm()" type="submit" id="submitForm" class="btn w-100 text-white font-celular" style="   
-                                        background: rgb(0,48,120);
-                                        background: linear-gradient(34deg, rgba(0,48,120,1) 0%, rgba(0,48,120,1) 25%, rgba(0,71,139,1) 62%, rgba(3,128,247,1) 100%);
-                                            font-weight: bold;
-                                            font-size: 30px;
-                                            border: 1px solid #333;">
-                                    {{ __('Cadastrar') }}
-                                </button>
+                            <button onclick="submitFormWithAlert()" type="submit" id="submitForm" class="btn w-100 text-white font-celular" style="
+                                background: rgb(0,48,120);
+                                background: linear-gradient(34deg, rgba(0,48,120,1) 0%, rgba(0,48,120,1) 25%, rgba(0,71,139,1) 62%, rgba(3,128,247,1) 100%);
+                                font-weight: bold;
+                                font-size: 30px;
+                                border: 1px solid #333;">
+                                {{ __('Cadastrar') }}
+                            </button>
                             </div>
                          </form> 
                     </div>
@@ -238,6 +240,26 @@
             }
         });
     });
+</script>
+
+
+<script>
+    function submitFormWithAlert() {
+        // Adicione aqui a lógica para enviar o formulário, se necessário
+
+        // Exibe o SweetAlert2 após o envio bem-sucedido do formulário
+        Swal.fire({
+            icon: 'success',
+            title: 'Cadastro realizado com sucesso!',
+            showConfirmButton: false,
+            timer: 4000 // Tempo em milissegundos (1.5 segundos)
+        }).then(() => {
+            // Redireciona para a nova tela
+            window.location.href = '/listausuarios';
+        });
+
+        // Adicione aqui lógica adicional, se necessário, após exibir o SweetAlert2
+    }
 </script>
 
 
