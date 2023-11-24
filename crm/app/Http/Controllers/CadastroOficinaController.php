@@ -17,28 +17,30 @@ class CadastroOficinaController extends Controller
         return view('listausuarios', compact('cadastro'));
     }
 
-    public function search(Request $request){
-        // para fazer o filtro no backend, pois não dava para fazer pelo front
-        $filters = $request->all();
-    
-        $cadastro = Cadastro::query();
-    
-        if ($request->filled('nome')) {
-            $cadastro->where('nome', 'like', "%{$request->nome}%");
-        }
-    
-        if ($request->filled('estado')) {
-            $cadastro->where('estado', 'like', "%{$request->estado}%");
-        }
-        if ($request->filled('cidade')) {
-            $cadastro->where('cidade', 'like', "%{$request->cidade}%");
-        }
-    
-        $cadastro = $cadastro->paginate(20);
-    
-        // Passa a variável $request para a view
-        return view('listausuarios', compact('cadastro', 'filters'))->with('request', $request);
+    public function search(Request $request)
+{
+    // para fazer o filtro no backend, pois não dava para fazer pelo front
+    $filters = $request->all();
+
+    $cadastro = Cadastro::query();
+
+    if ($request->filled('nome')) {
+        $cadastro->where('nome', 'like', "%{$request->nome}%");
     }
+
+    if ($request->filled('estado')) {
+        $cadastro->where('estado', 'like', "%{$request->estado}%");
+    }
+
+    if ($request->filled('cidade')) {
+        $cadastro->where('cidade', 'like', "%{$request->cidade}%");
+    }
+
+    $cadastro = $cadastro->paginate(20)->appends($filters);
+
+    // Passa a variável $request para a view
+    return view('listausuarios', compact('cadastro', 'filters'))->with('request', $request);
+}
     /**
      * Show the form for creating a new resource.
      */

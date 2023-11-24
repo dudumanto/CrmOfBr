@@ -47,8 +47,8 @@
             @csrf
             <div class="form-group" style="display: flex;">
             <input type="text" name="nome" class="form-control" style="width: 250px;" placeholder="Nome">
-            <input type="text" name="estado" class="form-control" style="width: 250px;" placeholder="Estado">
-            <input type="text" name="cidade" class="form-control" style="width: 250px;" placeholder="Cidade">
+            <input type="text" name="estado" class="form-control" style="width: 250px;margin-left: 30px;" placeholder="Estado">
+            <input type="text" name="cidade" class="form-control" style="width: 250px;margin-left: 30px;" placeholder="Cidade">
             <button type="submit" class="btn btn-primary" style="width: 150px;height: 36px;margin-left: 30px; background-color:#003078; color:white;"> Filtrar</button>
             </div>
            
@@ -87,12 +87,13 @@
                     <th scope="col">Celular</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Oficina</th>
-                    <th scope="col">Fantasia</th>
+                    <!-- <th scope="col">Fantasia</th> -->
                     <th scope="col">Logradouro</th>
                     <!-- <th scope="col">Cargo</th> -->
                     <th scope="col">Ramo</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Cidade</th>
+                    <th scope="col">Atualizado em </th>
                     <th scope="col">Editar</th>
                 </tr>
             </thead>
@@ -108,12 +109,13 @@
                     <td>{{$cadastros->celular}}</td>
                     <td>{{$cadastros->telefone_res}}</td>
                     <td>{{$cadastros->oficina}}</td>
-                    <td>{{$cadastros->fantasia}}</td>
+                    <!-- <td>{{$cadastros->fantasia}}</td> -->
                     <td>{{$cadastros->logradouro}}</td>
                     <!-- <td>{{$cadastros->cargo}}</td> -->
                     <td>{{$cadastros->ramo}}</td>
                     <td>{{$cadastros->estado}}</td>
                     <td>{{$cadastros->cidade}}</td>
+                    <td>{{$cadastros->updated_at}}</td>
                     <th>
                         <a href="{{route('edicao.cadastro', $cadastros->id)}}" class="btn btn-success">Editar</a>
                     </th>
