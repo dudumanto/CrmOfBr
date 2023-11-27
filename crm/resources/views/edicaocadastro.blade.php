@@ -26,7 +26,9 @@
 
     
 
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -59,26 +61,26 @@
                      
                             <div class="row">
                             <div class="form-group col-sm-6  col-12">
-                                    <label for="cep" class="text-white font-celular">{{ __('Cep') }}</label>
-                                    <input id="cep" type="text" class="form-control" name="cep" value="{{$cadastro->cep}}" required>
-                            </div>
-                                <div class="form-group col-sm-6  col-12">
-                                    <label for="nome" class="text-white font-celular">{{ __('Status') }}</label>
-                                    <input id="nome" type="text" class="form-control" name="status" value="{{$cadastro->status}}" required>
-                                </div>
-                                <div class="form-group col-sm-6  col-12">
-                                    <label for="nome" class="text-white font-celular">{{ __('CNPJ') }}</label>
-                                    <input id="nome" type="text" class="form-control" name="cnpj" value="{{$cadastro->cnpj}}" required>
-                                </div>
-                                <div class="form-group col-sm-6  col-12">
                                     <label for="nome" class="text-white font-celular">{{ __('Nome') }}</label>
                                     <input id="nome" type="text" class="form-control" name="nome" value="{{$cadastro->nome}}" required>
-                                </div>
-
-                                <div class="form-group col-sm-6 col-12">
+                            </div>
+                            <div class="form-group col-sm-6 col-12">
                                     <label for="sobrenome" class="text-white font-celular">{{ __('Sobrenome') }}</label>
                                     <input id="sobrenome" type="text" class="form-control" name="sobrenome" value="{{$cadastro->sobrenome}}" required>
-                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-6  col-12">
+                                    <label for="nome" class="text-white font-celular">{{ __('Status') }}</label>
+                                    <input id="status" type="text" class="form-control" name="status" value="{{$cadastro->status}}" required>
+                            </div>
+                            <div class="form-group col-sm-6  col-12">
+                                    <label for="nome" class="text-white font-celular">{{ __('CNPJ') }}</label>
+                                    <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{$cadastro->cnpj}}" required>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                               <label for="cep" class="text-white font-celular">{{ __('Cep') }}</label>
+                               <input id="cep" type="text" class="form-control" name="cep" value="{{$cadastro->cep}}" required>
                             </div>
 
                             <div class="form-group">
@@ -144,11 +146,52 @@
         </div>
     </div>
 </div>
-<script>
-    function submitFormWithAlert() {
-        // Adicione aqui a lógica para enviar o formulário, se necessário
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+ <script>
+    $(document).ready(function () {
+        function limparCamposEndereco() {
+            $('#estado').val('');
+            $('#cidade').val('');
+            $('#logradouro').val('');
+        }
 
-        // Exibe o SweetAlert2 após o envio bem-sucedido do formulário
+        $('#cep').mask('99999-999');
+
+        $('#cep').blur(function () {
+            var cep = $(this).val().replace(/\D/g, '');
+
+            if (cep.length == 8) {
+                $.getJSON(`https://viacep.com.br/ws/${cep}/json/`, function (data) {
+                    if (!data.erro) {
+                        $('#estado').val(data.uf);
+                        $('#cidade').val(data.localidade);
+                        $('#logradouro').val(data.logradouro);
+                    } else {
+                        limparCamposEndereco();
+                        alert('CEP não encontrado');
+                    }
+                });
+            } else {
+                limparCamposEndereco();
+            }
+        });
+    });
+</script>
+
+<script>
+        $(document).ready(function(){
+            $('#cnpj').mask('99.999.999/9999-99');
+            $('#celular').mask('(99) 9999-99999');
+            $('#telefone').mask('(99) 9999-99999');
+            $('#cep').mask('99999-999');
+            $('#nascimento').mask('99/99/9999');
+        });
+    </script>
+<script>
+  
+    function submitFormWithAlert() {
+
         Swal.fire({
             icon: 'success',
             title: 'Atualização realizada com sucesso!',
@@ -159,7 +202,6 @@
             window.location.href = '/listausuarios';
         });
 
-        // Adicione aqui lógica adicional, se necessário, após exibir o SweetAlert2
     }
 </script>
 

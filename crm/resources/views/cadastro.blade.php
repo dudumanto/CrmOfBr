@@ -85,27 +85,25 @@
 
                             <div class="row">
                             <div class="form-group col-sm-6  col-12">
-                                    <label for="cep" class="text-white font-celular">{{ __('Cep') }}</label>
-                                    <input id="cep" type="text" class="form-control" name="cep" required>
+                                    <label for="nome" class="text-white font-celular">{{ __('Nome') }}</label>
+                                    <input id="nome" type="text" class="form-control" name="nome" required>
+                            </div>
+                            <div class="form-group col-sm-6 col-12">
+                                    <label for="sobrenome" class="text-white font-celular">{{ __('Sobrenome') }}</label>
+                                    <input id="sobrenome" type="text" class="form-control" name="sobrenome" required>
                             </div>
                             <div class="form-group col-sm-6  col-12">
                                     <label for="status" class="text-white font-celular">{{ __('Status') }}</label>
                                     <input id="status" type="text" class="form-control" name="status" required>
-                                </div>
+                            </div>
                             <div class="form-group col-sm-6  col-12">
                                     <label for="cnpj" class="text-white font-celular">{{ __('Cnpj') }}</label>
                                     <input id="cnpj" type="text" class="form-control" name="cnpj" required>
-                                </div>
-                                
-                                <div class="form-group col-sm-6  col-12">
-                                    <label for="nome" class="text-white font-celular">{{ __('Nome') }}</label>
-                                    <input id="nome" type="text" class="form-control" name="nome" required>
-                                </div>
-
-                                <div class="form-group col-sm-6 col-12">
-                                    <label for="sobrenome" class="text-white font-celular">{{ __('Sobrenome') }}</label>
-                                    <input id="sobrenome" type="text" class="form-control" name="sobrenome" required>
-                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <label for="cep" class="text-white font-celular">{{ __('Cep') }}</label>
+                            <input id="cep" type="text" class="form-control" name="cep" required>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="text-white font-celular">{{ __('E-mail') }}</label>

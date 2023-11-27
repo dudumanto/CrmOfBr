@@ -199,11 +199,27 @@ class CadastroOficinaController extends Controller
         $cadastro = cadastro::select('*')->get();
     return response()->json(['data' => $cadastro]);
     }
-    public function exportCSV()
+    public function exportCSV(Request $request)
     {
-        $cadastros = Cadastro::all();
+        $filters = $request->all();
 
-        $csvFileName = 'cadastros.csv';
+        $cadastros = Cadastro::query();
+    
+        if ($request->filled('nome')) {
+            $cadastros->where('nome', 'like', "%{$request->nome}%");
+        }
+    
+        if ($request->filled('estado')) {
+            $cadastros->where('estado', 'like', "%{$request->estado}%");
+        }
+    
+        if ($request->filled('cidade')) {
+            $cadastros->where('cidade', 'like', "%{$request->cidade}%");
+        }
+    
+        $cadastrosFiltered = $cadastros->get();
+    
+        $csvFileName = 'cadastros_filtered.csv';
         $headers = array(
             "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$csvFileName",
@@ -213,23 +229,23 @@ class CadastroOficinaController extends Controller
             "Content-Encoding" => "UTF-8",
             "Delimiter" => ";",
         );
-
-        $response = new StreamedResponse(function () use ($cadastros) {
+    
+        $response = new StreamedResponse(function () use ($cadastrosFiltered) {
             $handle = fopen('php://output', 'w');
-
+    
             // Adiciona cabeçalhos CSV
-            fputcsv($handle, array('ID', 'Nome', 'Email','CNPJ'),';');
-
+            fputcsv($handle, array('ID', 'Nome', 'Email', 'CNPJ'), ';');
+    
             // Adiciona dados ao CSV
-            foreach ($cadastros as $cadastro) {
-                fputcsv($handle, array($cadastro->id, $cadastro->nome, $cadastro->email,$cadastro->cnpj),';');
+            foreach ($cadastrosFiltered as $cadastro) {
+                fputcsv($handle, array($cadastro->id, $cadastro->nome, $cadastro->email, $cadastro->cnpj), ';');
             }
-
+    
             fclose($handle);
         });
-
-                $response->headers->add($headers);
-
-                return $response;
+    
+        $response->headers->add($headers);
+    
+        return $response;
     }
 }

@@ -54,25 +54,11 @@
            
           
         </form>
-        <button onclick="downloadCSV()" class="btn btn-primary" style="width: 150px;height: 36px;margin-left: 30px; background-color:#003078; color:white;">Download CSV</button>
+                     @if($cadastro->isNotEmpty())
+                    <a href="{{ route('export.csv', $filters) }}"style="width: 150px;height: 36px;margin-left: 30px; background-color:#003078; color:white;" class="btn btn-primary">Download CSV</a>
+                    @endif        
     </div>
-    <!-- <div>
-        <button class="btn btn-primary" style="   margin-top: 110px; margin-left: 30px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-         Menu
-        </button>
-
-                    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="staticBackdropLabel">Menu</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <i class="fa-solid fa-users"></i>  <a href="{{route('lista.usuarios')}}" style="color: black;">Lista e Edição de Usuários</a>
-                        </div>
-                    </div>
-                
-    </div> -->
-       
+   
 
         <!-- Tabela de Cadastros -->
         <table class="table table-hover" id="pesquisa" style="margin-top: 20px; min-width: 100%">
@@ -134,17 +120,6 @@
     </div>
     
 </body>
-<script>
-        function downloadCSV() {
-            window.location.href = "{{ route('export.csv') }}";
-        }
-    </script>
-   
-
-
-
- 
-   
 </div>
 
 @endsection
