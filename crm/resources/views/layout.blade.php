@@ -130,7 +130,7 @@
             });
         });
     </script>
-    <nav class="navbar navbar-expand-lg p-0 navbar-dark bg-transparent position-absolute w-100  " style="z-index: 10;">
+<nav class="navbar navbar-expand-lg p-10 navbar-dark bg-transparent position-absolute w-100 border-5 border-blue" style="border-bottom: 5px solid blue; margin-bottom: 10px; z-index: 10;">
         <div class="container-fluid w-100 d-flex justify-content-between" style="background-color:black;">
 
             <a href="/" style="text-decoration:none" class="text-white d-flex">
