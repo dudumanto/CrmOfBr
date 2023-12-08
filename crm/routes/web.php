@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CadastroOficinaController;
 use App\Http\Controllers\CadastroUserController;
+use App\Http\Controllers\EventosController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     ->name('cadastrouser.cadastrousuario')
     ->middleware('admin');
     Route::post('/create',[CadastroUserController::class,'create'])->name('user.create');
+    Route::get('/eventos',[EventosController::class,'create'])->name('eventos.create');
 
 
 
